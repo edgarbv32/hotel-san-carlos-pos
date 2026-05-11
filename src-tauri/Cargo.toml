@@ -1,0 +1,26 @@
+[package]
+name = "hotel-san-carlos-pos"
+version = "0.1.0"
+description = "A Tauri App"
+authors = ["you"]
+license = ""
+repository = ""
+edition = "2021"
+
+[build-dependencies]
+tauri-build = { version = "1.5.2", features = [] }
+
+[dependencies]
+tauri = { version = "1.6.3", features = [ "dialog-confirm", "window-close", "process-exit", "notification-all", "shell-open"] }
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+rusqlite = { version = "0.31.0", features = ["bundled"] }
+# Se especifica una versión de tauri-plugin-sql compatible con Tauri v1
+tauri-plugin-sql = { git = "https://github.com/tauri-apps/plugins-workspace", branch = "v1", features = ["sqlite"] }
+tokio = { version = "1.46.0", features = ["macros", "rt-multi-thread"] }
+chrono = { version = "0.4.41", features = ["serde"] }
+[features]
+
+# this feature is used for production builds or when `devPath` points to the filesystem
+# DO NOT REMOVE!!
+custom-protocol = ["tauri/custom-protocol"]

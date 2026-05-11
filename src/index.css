@@ -1,0 +1,37 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Define las propiedades de la página para la impresión */
+@page {
+  /* Tamaño para un rollo de impresora térmica de 58mm */
+  size: 58mm auto;
+  /* Margen pequeño para evitar que el contenido se corte en los bordes */
+  margin: 4mm;
+}
+
+@media print {
+  /* Asegura que el cuerpo de la página se ajuste al ancho del papel */
+  body {
+    width: 58mm;
+  }
+  
+  /* Oculta todo por defecto al imprimir */
+  body > #root > * {
+    visibility: hidden;
+  }
+
+  /* Hace visible únicamente el componente del ticket y sus hijos */
+  .print-ticket,
+  .print-ticket * {
+    visibility: visible;
+  }
+  
+  /* Posiciona el ticket en la esquina superior izquierda de la página de impresión */
+  .print-ticket {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+  }
+}
